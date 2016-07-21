@@ -1,0 +1,72 @@
+@import "base";
+@import "ctm_flat_ui";
+ 
+.fbox {
+    display: flex;
+    justify-content: space-between;
+    
+}
+.fbox-vcenter { 
+	 // @extend .fbox;  
+	 display: flex;
+    align-items:center;
+}
+.box{
+	display:box;
+}
+ 
+.fbox-column{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.maincss{
+    height: 100vh;
+    max-height: 100vh; 
+    background: #FFF;
+    width: 100vw;
+    max-width: 100vw;
+     
+    .center {
+          flex:1;
+    }
+    .title_bar {
+        input,
+        a,
+        button {
+            -webkit-app-region: no-drag;
+        }
+        flex-shrink: 0;
+        -webkit-user-select: none;
+        -webkit-app-region: drag;
+    }
+    #footer {
+    	color:white;
+        height:30px;
+        flex-shrink: 0;
+        background-color: black;
+    }
+}
+.progress{
+	width:150px;
+}
+
+.left-panel {
+    width: 300px;
+    flex-shrink: 0;
+    overflow: auto;
+}
+
+.edit-body,
+{  position: relative;
+    width: 100%;
+}
+
+.CodeMirror {
+    /* Set height, width, borders, and global font properties here */
+    font-family: monospace;
+    position: absolute; z-index: 10; left: 0; top: 0; width: 100%; height: 100%; 
+    
+}
+ 

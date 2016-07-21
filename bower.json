@@ -1,0 +1,24 @@
+{
+  "name": "Cloud-Markdown",
+  "description": "Simple TODO application built with Electron and AngularJS.",
+  "main": "main.js",
+  "authors": [
+    "Vjekoslav Ratkajec <vjeko@creaticon.hr>"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+ 
+    "font-awesome": "^4.6.3",
+    "livereload-js": "^2.2.1",
+    "flat-ui": "^2.3.0",
+    "codemirror": "^5.16.0"
+  }
+}
