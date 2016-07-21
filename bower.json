@@ -17,6 +17,7 @@
   "dependencies": {
  
     "font-awesome": "^4.6.3",
+     "angular": "^1.5.5",
     "livereload-js": "^2.2.1",
     "flat-ui": "^2.3.0",
     "codemirror": "^5.16.0"
