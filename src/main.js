@@ -48,7 +48,6 @@ app.on('ready', function() {
     logger.debug("Starting application");
   
     mainWindow = new BrowserWindow({
-     
         frame: false,
         width: 1024,
         height: 768, 
