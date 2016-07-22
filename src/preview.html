@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Edit.markdown</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ 
+    <link rel="stylesheet" href="css/preview.css" />
+     <script>
+        window.addEventListener('storage', function(e) {  
+             
+            var preview = localStorage.preview ; 
+            document.getElementById('content').innerHTML=preview;
+  
+        });
+        var preview = localStorage.preview ; 
+        document.getElementById('content').innerHTML=preview;
+     </script>
+</head>
+
+<body  >
+    <div  >
+         
+            <h2>预览窗口</h2> 
+    </div>
+    <div id="content" classs='markdown-body'></div>
+</body>
+
+</html>

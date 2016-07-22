@@ -1,11 +1,11 @@
 {
-  "name": "Cloud-Markdown",
-  "description": "Simple TODO application built with Electron and AngularJS.",
+  "name": "Edit-Markdown",
+  "description": "它是一个Markdown文本编辑器，用javascript开发的PC桌面应用.",
   "main": "main.js",
   "authors": [
-    "Vjekoslav Ratkajec <vjeko@creaticon.hr>"
+    "guo tao <guo@tranway.cn>"
   ],
-  "license": "MIT",
+  "license": "Apache",
   "homepage": "",
   "ignore": [
     "**/.*",

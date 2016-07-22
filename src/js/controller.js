@@ -1,10 +1,30 @@
 
-const {dialog} = remote;
-
-var chokidar = require('chokidar');
-
-const path = require('path');
 (function() {
+    const _ = require('lodash');
+    const {dialog} = remote;
+    const marked = require('marked');
+
+    var renderer=new marked.Renderer();
+    renderer.image=function(href,title,text){
+
+        let temp='<img src="${href}" alt="$text{}" style="max-width:100%;">';
+        var compiled = _.template(temp); 
+        return  compiled({href:href,title:title,text:text });
+    }
+ 
+    marked.setOptions({
+              renderer:renderer ,
+                 gfm: true,
+                 tables: true, 
+                 pedantic: false,
+                 sanitize: true,
+                 smartLists: true 
+             });
+
+
+    const chokidar = require('chokidar');
+  
+    const path = require('path');
     const fs = require('fs');
 
     angular
@@ -23,6 +43,8 @@ const path = require('path');
         vm.closeWindow = closeWindow;
         vm.minWindow = minWindow;
         vm.maxWindow = maxWindow;
+        
+       
 
         vm.removeFile = removeFile;
         vm.addFile = addFile;
@@ -31,7 +53,7 @@ const path = require('path');
         vm.currentFile = localStorage.currentFile;
         vm.preview = preview;
         vm.saveFile = saveFile;
-        vm.updateView = updateView;
+        
         codemirror.setOption("extraKeys", {
             'Ctrl-S': function(cm) {
                 vm.saveFile(vm.currentFile);
@@ -62,15 +84,29 @@ const path = require('path');
             watcher.add(Object.keys(vm.fileList));
         } else {
             console.log("file is  null");
-            vm.fileList = {};
+            vm.fileList = {}; 
         }
         if(vm.currentFile){
             openFile(vm.currentFile);
+        }else{
+            localStorage['preview']='';
         }
 
-        function preview(preview) {
+        function preview() {
             // body...
             vm.isPreview = !vm.isPreview;
+            
+            
+            
+            if(vm.isPreview){
+                let cnt =localStorage['temp_' + vm.currentFile];
+                localStorage['preview']=marked(cnt);
+                ipcRenderer.send("show-preview");
+            }else{
+                localStorage['preview']="";
+                ipcRenderer.send("hide-preview");
+            }
+ 
 
         }
 
@@ -89,6 +125,7 @@ const path = require('path');
             }
             codemirror.swapDoc(docs[key].doc); 
             vm.currentFile =localStorage.currentFile= key;  
+            localStorage['preview']=cnt;
             
         }
 
@@ -145,8 +182,9 @@ const path = require('path');
 
         function minWindow() {
             /*最小化窗口*/
+             
             console.log("min window is click!!");
-            ipcRenderer.send("window-all-minimized")
+            ipcRenderer.send("window-all-minimized");
         }
 
         function closeWindow() {
@@ -159,14 +197,13 @@ const path = require('path');
         function searchKey(key) {
             console.log("search_fn is click and key is ", key);
         }
-        function updateView () {
-            
-        }
+    
         codemirror.on("changes", function(Editor, changes) {
             console.log("doc is changed ", vm.currentFile);
             let ht = codemirror.getHistory();
             //判断是否已经还原到最初状态
-            localStorage['temp_' + vm.currentFile] = codemirror.getValue();
+            let cnt = codemirror.getValue();
+            localStorage['temp_' + vm.currentFile] = cnt;
             localStorage['temp_hist_' + vm.currentFile] = JSON.stringify(codemirror.getHistory());
 
             var isOri = ht.done.filter(it => {
@@ -179,16 +216,14 @@ const path = require('path');
             } else {
                 vm.fileList[vm.currentFile].isChanged = false;
             }
+            if(vm.isPreview){
+                localStorage['preview']=marked(cnt);
+            }
 
             $scope.$apply();
         });
-        codemirror.on("keyHandled", function(Editor,keyname, event) {
-            console.log("keydonw ", keyname);
-            
-        });
-
-
-
+        
+ 
     }
 
 })();
