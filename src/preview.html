@@ -10,11 +10,11 @@
         window.addEventListener('storage', function(e) {  
              
             var preview = localStorage.preview ; 
-            document.getElementById('content').innerHTML=preview;
+            document.getElementById('content').innerHTML=preview||"";
   
         });
         var preview = localStorage.preview ; 
-        document.getElementById('content').innerHTML=preview;
+        document.getElementById('content').innerHTML=preview||"";
      </script>
 </head>
 
@@ -23,7 +23,7 @@
          
             <h2>预览窗口</h2> 
     </div>
-    <div id="content" classs='markdown-body'></div>
+    <div id="content" class='markdown-body'></div>
 </body>
 
 </html>

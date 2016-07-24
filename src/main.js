@@ -136,7 +136,7 @@ app.on('ready', function() {
 
      
      
-     // previewindow.webContents.openDevTools({detach: true});
+      previewindow.webContents.openDevTools({detach: true});
      previewindow.loadURL('file://' + __dirname + '/preview.html');
      previewindow.on('close', (e) => {
          previewindow.hide();

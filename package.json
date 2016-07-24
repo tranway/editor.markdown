@@ -1,8 +1,8 @@
 {
-  "name": "Cloud-Markdown",
+  "name": "Edit.Markdown",
   "version": "0.0.1",
-  "description": "Simple TODO application built with Electron and AngularJS.",
-  "author": "Vjekoslav Ratkajec <vjeko@creaticon.hr>",
+  "description": "Edit.markdown",
+  "author": "guo.tao <guo@tranway.cn>",
   "main": "main.js",
   "license": "MIT",
   "dependencies": {
@@ -15,8 +15,7 @@
     "jquery": "^3.1.0",
     "livereload-js": "^2.2.2",
     "lodash": "^4.13.1",
-    "marked": "^0.3.5",
-    "nedb": "^1.8.0"
+    "marked": "^0.3.5",    
   },
   "devDependencies": {
     "del": "^2.2.1",
