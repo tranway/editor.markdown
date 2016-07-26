@@ -32,15 +32,17 @@ var feedURL = "";
 console.log("isDevelopment11", isDevelopment);
   
 // Quit when all windows are closed
-ipcMain.on('window-all-closed', function() { 
+ipcMain.on('close-window', function() { 
     console.log("receive cmd close window!" ); 
-    app.quit();
+    previewindow.close(); 
+    mainWindow.close();
+       
 });
-ipcMain.on("window-all-minimized", () => {
+ipcMain.on("w-minimized", () => {
     mainWindow.minimize(); 
 })
 
-ipcMain.on("window-all-maxed", () => {
+ipcMain.on("w-maxed", () => {
     mainWindow.maximize();
 });
 ipcMain.on('show-preview',()=>{
@@ -48,6 +50,11 @@ ipcMain.on('show-preview',()=>{
 })
 ipcMain.on('hide-preview',()=>{
     previewindow.hide();
+})
+app.on('window-all-closed',function  () {
+    mainWindow = null;
+    previewindow = null;
+    app.quit();
 })
  
 // When application is ready, create application window
@@ -74,13 +81,12 @@ app.on('ready', function() {
     mainWindow.loadURL('file://' + __dirname + "/index.html");
 
  
-    // mainWindow.webContents.openDevTools({detach: true});
+     // mainWindow.webContents.openDevTools({detach: true});
 
     // Cleanup when window is closed
     mainWindow.on('closed', function() {
         storage.save(runtime); 
-        mainWindow = null;
-        previewindow = null;
+      
     });
     
     // Cleanup when window is closed
@@ -136,7 +142,7 @@ app.on('ready', function() {
 
      
      
-      previewindow.webContents.openDevTools({detach: true});
+     // previewindow.webContents.openDevTools({detach: true});
      previewindow.loadURL('file://' + __dirname + '/preview.html');
      previewindow.on('close', (e) => {
          previewindow.hide();

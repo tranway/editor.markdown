@@ -56,15 +56,17 @@
                     </a> 
                     <a class=" btn btn-success btn-xs  fa  fa-floppy-o" href="javascript:void(0)" title="全部保存" ng-click="vm.addFile()">
                     </a> 
-                    <a class=" btn btn-success btn-xs  fa fa-plus  " href="#" title="新建文件" ng-click="vm.addFile()">
+                    <a class=" btn btn-success btn-xs  fa fa-plus  " href="#" title="新建文件" ng-click="vm.newFile()">
                     </a>
                     <a class=" btn btn-success btn-xs  fa " ng-class="{'fa-eye':!vm.isPreview,'fa-eye-slash':vm.isPreview}" href="#" title="预览" ng-click="vm.preview()">
                     </a>
                 </div>
                 <!-- List group -->
                 <ul class="list-group">
-                  <li class="list-group-item fbox" ng-repeat="(key, file) in vm.fileList">
-                        <a class=" " ng-click="vm.openFile(key)" href="javascript:void(0)">
+                  <li class="list-group-item fbox" ng-repeat="(key, file) in vm.fileList"
+                         ng-class="{'select-css':vm.currentFile==key}"                     
+                  >
+                        <a  ng-click="vm.openFile(key)" href="javascript:void(0)">
                             <i class="fa fa-file-text-o"></i>{{file.name}}</a>
                         <div class="opt">
                             <a ng-show="file.isChanged" class="btn btn-info btn-xs fa fa-floppy-o" title="保存" ng-click="vm.saveFile(key)" href="javascript:void(0)">

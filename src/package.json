@@ -1,7 +1,7 @@
 {
   "name": "Edit-Markdown",
   "version": "0.0.1",
-  "description": "Simple TODO application built with Electron and AngularJS.",
+  "description": "Edit.markdown",
   "author": "Guo.Tao<ggggttt23@163.com>",
   "main": "main.js",
   "license": "Apache"

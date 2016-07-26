@@ -7,15 +7,24 @@
  
     <link rel="stylesheet" href="css/preview.css" />
      <script>
+        const $= require('jquery');
         window.addEventListener('storage', function(e) {  
              
             var preview = localStorage.preview ; 
             document.getElementById('content').innerHTML=preview||"";
+          
+            let select_txt = localStorage.select_txt;
+           
+            if(select_txt){
+                // console.log(select_txt);
+                document.location.href='#'+select_txt
+            }
+
   
         });
-        var preview = localStorage.preview ; 
-        document.getElementById('content').innerHTML=preview||"";
+        
      </script>
+           
 </head>
 
 <body  >
@@ -24,6 +33,11 @@
             <h2>预览窗口</h2> 
     </div>
     <div id="content" class='markdown-body'></div>
+    <script>
+        var preview = localStorage.preview ; 
+        document.getElementById('content').innerHTML=preview||"";
+
+    </script>
 </body>
 
 </html>
