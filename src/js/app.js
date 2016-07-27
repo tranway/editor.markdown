@@ -1,12 +1,10 @@
 const electron = require('electron');
 const {ipcRenderer} = electron;
 const {remote} = electron;
- 
- 
-const logger = remote.getGlobal('logger');
 
-angular.module('app', [])
-    .value('logger', logger) 
+ 
+
+angular.module('app', []) 
     .value('ipcRenderer', ipcRenderer);
 
 ;

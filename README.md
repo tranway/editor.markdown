@@ -4,6 +4,10 @@
 ***
 ![Alt text](https://github.com/guot/edit.marketdown/blob/master/screenshot/screenshot1.PNG?raw=true)
 
+## 安装
+
+你可以从[Release](https://github.com/guot/edit.marketdown/releases)下载程序文件，解压后执行EditMarkdown.exe运行程序。 
+
 ## 已实现的功能
  
 * **多文件编辑：** 可以对多个文件进行编辑，方便的文件切换。  
@@ -28,7 +32,7 @@
 ## 待开发功能
 
 1. 文件保存[已完成]
-2. 版本发布
+2. 版本发布[已完成]
 3. 实时预览[已完成]
 4. 通用搜索功能
 5. 新建空白文档[已完成]
@@ -65,6 +69,7 @@
  
 
 ## 变更列表
+- 2016.7.27 完成打包
 - 2016.7.26 完成新建文件功能。（可以在编辑器中创建Markdown文件）。
 - 2016.7.25 完成预览窗口内容动态跟随编辑器内容（当点击编辑Marketdown视图时的标题内容时，
 预览窗口内容跟随变更。   

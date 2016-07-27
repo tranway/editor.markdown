@@ -1,5 +1,5 @@
 // Handle Squirrel events for Windows immediately on start
-if (require('electron-squirrel-startup')) return;
+// if (require('electron-squirrel-startup')) return;
 
 //全局变量。
 
@@ -8,17 +8,14 @@ if (require('electron-squirrel-startup')) return;
 const electron = require('electron');
 const {app} = electron;
 const {BrowserWindow} = electron;
-const {autoUpdater} = electron;
 const {ipcMain} = electron;
 const _ = require('lodash');
-const os = require('os');
-
-const logger = require('winston');
+  
 const storage = require('./storage');
   
-logger.level = 'debug';
-global.logger = logger;
-var runtime=storage.restore();//运行时配置
+ 
+global.logger = console;
+var runtime={};//运行时配置
 
 
 // Keep reference of main window because of GC
@@ -56,11 +53,11 @@ app.on('window-all-closed',function  () {
     previewindow = null;
     app.quit();
 })
- 
-// When application is ready, create application window
-app.on('ready', function() {
-   
-    logger.debug("Starting application");
+function loadApp () {
+    //加载APP窗口
+    
+    runtime=storage.restore();
+    logger.log("Starting application");
      
     let mwOperation = {
         frame: false,
@@ -81,7 +78,7 @@ app.on('ready', function() {
     mainWindow.loadURL('file://' + __dirname + "/index.html");
 
  
-     // mainWindow.webContents.openDevTools({detach: true});
+     mainWindow.webContents.openDevTools({detach: true});
 
     // Cleanup when window is closed
     mainWindow.on('closed', function() {
@@ -139,9 +136,7 @@ app.on('ready', function() {
         previewindow.setBounds(runtime.bounds.pwBound);
         mainWindow.setBounds(runtime.bounds.mwBound);
      }
-
-     
-     
+ 
      // previewindow.webContents.openDevTools({detach: true});
      previewindow.loadURL('file://' + __dirname + '/preview.html');
      previewindow.on('close', (e) => {
@@ -162,5 +157,13 @@ app.on('ready', function() {
         // previewindow = null;
     });
      
-
+}
+// When application is ready, create application window
+app.on('ready', function() {
+    try{
+        loadApp();
+    }catch(e){
+        console.log(e);
+        app.quit();
+    }
 });

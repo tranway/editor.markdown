@@ -43,13 +43,13 @@
 
     angular
         .module('app')
-        .controller('AppController', ["$scope", "logger",
+        .controller('AppController', ["$scope", 
             "ipcRenderer", "codemirror", AppController
         ]);
     var fileList = localStorage.fileList;
     var docs={};//打开文件内存缓存。
 
-    function AppController($scope, logger, ipcRenderer, codemirror) {
+    function AppController($scope , ipcRenderer, codemirror) {
         var vm = this;
         vm.searchKey = searchKey;
         vm.closeWindow = closeWindow;

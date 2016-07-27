@@ -4,5 +4,13 @@
   "description": "Edit.markdown",
   "author": "Guo.Tao<ggggttt23@163.com>",
   "main": "main.js",
-  "license": "Apache"
+  "license": "Apache",
+  "dependencies": {
+    "angular": "^1.5.5",
+    "chokidar": "^1.6.0",
+    "jquery": "^3.1.0",
+    "livereload-js": "^2.2.2",
+    "lodash": "^4.13.1",
+    "marked": "^0.3.5"
+  }
 }
