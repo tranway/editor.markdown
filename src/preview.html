@@ -27,8 +27,9 @@
         $(function  () {
             // body...
             console.log('doc is ready ');
-            var preview = localStorage.preview ; 
+            
             $("body").keypress(function(e) {
+             var preview = localStorage.preview ; 
             /* Act on the event */
             console.log(e.ctrlKey ,e.which );
             if(e.ctrlKey && e.which ==5&&preview){
