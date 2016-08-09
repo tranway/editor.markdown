@@ -78,7 +78,7 @@ function loadApp () {
     mainWindow.loadURL('file://' + __dirname + "/index.html");
 
  
-     mainWindow.webContents.openDevTools({detach: true});
+      // mainWindow.webContents.openDevTools({detach: true});
 
     // Cleanup when window is closed
     mainWindow.on('closed', function() {
@@ -137,7 +137,7 @@ function loadApp () {
         mainWindow.setBounds(runtime.bounds.mwBound);
      }
  
-     // previewindow.webContents.openDevTools({detach: true});
+      // previewindow.webContents.openDevTools({detach: true});
      previewindow.loadURL('file://' + __dirname + '/preview.html');
      previewindow.on('close', (e) => {
          previewindow.hide();

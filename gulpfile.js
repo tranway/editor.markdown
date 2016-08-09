@@ -16,11 +16,15 @@ gulp.task('build:scss', function() {
         .pipe(livereload());
 });
 gulp.task('build:src', function() {
-    gulp.src('src/**')
+    gulp.src(['src/img/**'])
+       .pipe(gulp.dest(DEST+'/img/'));
+    gulp.src(['src/**','!src/img/**'])
         .pipe(changed(DEST))
         .pipe(replace("../build/lib", "lib"))
         .pipe(gulp.dest(DEST))
         .pipe(livereload());
+   
+         
 })
 gulp.task('clean', function() {
     // clear build directory;

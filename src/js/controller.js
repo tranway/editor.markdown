@@ -63,10 +63,25 @@
         vm.currentFile = localStorage.currentFile||"";
         vm.preview = preview;
         vm.saveFile = saveFile;
+        vm.exportHtml=exportHtml;
         //设置编辑器保存快捷键
         codemirror.setOption("extraKeys", {
             'Ctrl-S': function(cm) {
                 vm.saveFile(vm.currentFile);               
+            },'Ctrl-1':function  (cm) {
+                cm.replaceSelection("# "); 
+            },'Ctrl-2':function  (cm) {
+                cm.replaceSelection("## "); 
+            },'Ctrl-3':function  (cm) {
+                cm.replaceSelection("### "); 
+            },'Ctrl-4':function  (cm) {
+                cm.replaceSelection("#### "); 
+            },'Ctrl-B':function  (cm) {
+                cm.replaceSelection("**"); 
+                console.log(cm.getCursor());
+                let cur =cm.getCursor();
+                cur.ch=cur.ch-1;
+                cm.setCursor(cur);
             }
         });
 
@@ -207,6 +222,26 @@
             }
             
             
+        }
+        /**
+         * 导出预览结果到Html文件中
+         */
+        function exportHtml () {
+             let sfname = dialog.showSaveDialog({
+                    title: '保存预览结果',
+                    buttonLabel: '保存',
+                    filters: [{
+                        name: 'html(*.html)',
+                        isTemp: false,
+                        extensions: ['html']
+                    }]
+                });
+             var precnt =localStorage['preview'] ;
+             if(_.isEmpty(precnt)){
+                alert('请先进行预览再导出！');
+             }else{
+                fs.writeFile(sfname,precnt);
+             }
         }
         function removeFile(key) {
             //从列表中移除文件。

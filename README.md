@@ -1,10 +1,11 @@
-# Edit.marketdown
-它是一个基于PC桌面的MarketDown的文本编辑器，这个说明文档就是用它进行编辑的。edit.markdown是在windows10
+# Edit.markdown
+它是一个基于PC桌面的Markdown的文本编辑器，这个说明文档就是用它进行编辑的。edit.markdown是在windows10
 环境下开发的，目前还不支持非Windows环境，建议屏幕分辨率1920\*1080以上。
 ***
-![Alt text](https://github.com/guot/edit.marketdown/blob/master/screenshot/screenshot1.PNG?raw=true)
+![Alt text](https://github.com/guot/edit.markdown/blob/master/screenshot/screenshot1.PNG?raw=true)
 
 ## 安装
+
 
 你可以从[Release](https://github.com/guot/edit.marketdown/releases)下载程序文件，解压后执行EditMarkdown.exe运行程序。 
 
@@ -16,9 +17,10 @@
 * **实时预览：**在编辑文本时可打开实时预览窗口，会自动同步显示解析后的Markdown文本的结果。
 * **预览窗口跟随：**当主窗口进行移动或缩放时，预览窗口会动态跟随在主窗口的右侧，并自动调整大小。
 * **预览内容快速定位：**当点击编辑内容的标题时，预览窗口会自动滚动到相应的位置。
+* **预览结果导出功能 ** 预览结果可导出到HTML文件中，导出结果不带有样式，方便后期自定义样式。
 
 ## 使用的开源框架及组件
- 
+
 1. [nodejs](https://nodejs.org)是运行在服务端的 JavaScript
 2. [electron](http://electron.atom.io/) 可以用js开发桌面应用
 3. [angular.js](https://github.com/angular/angular.js) mvvm 框架
@@ -69,11 +71,17 @@
  
 
 ## 变更列表
-- 2016.7.27 完成打包
+- 2016.7.27 
+      1、增加导出预览结果到HTML文件的功能  
+      2、增加编辑快捷键操作 CTRL1~4对应1~4级标题。
+      3、增加编辑快捷键操作 CTRL+B 强调
+      4、增加在预览窗口下按 CTRL+E快速复制生成内容到剪切板。 
+- 2016.7.27 完成打包，发布版本1.00-alpha.1。
 - 2016.7.26 完成新建文件功能。（可以在编辑器中创建Markdown文件）。
 - 2016.7.25 完成预览窗口内容动态跟随编辑器内容（当点击编辑Marketdown视图时的标题内容时，
 预览窗口内容跟随变更。   
 - 2016.7.22 完成文件保存、实现预览、预览窗口跟随、窗口位置记忆功能。
+
 
 
 

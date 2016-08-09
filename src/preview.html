@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="css/preview.css" />
      <script>
         const $= require('jquery');
+        const {clipboard} = require('electron')
+
         window.addEventListener('storage', function(e) {  
              
             var preview = localStorage.preview ; 
@@ -22,6 +24,23 @@
 
   
         });
+        $(function  () {
+            // body...
+            console.log('doc is ready ');
+            var preview = localStorage.preview ; 
+            $("body").keypress(function(e) {
+            /* Act on the event */
+            console.log(e.ctrlKey ,e.which );
+            if(e.ctrlKey && e.which ==5&&preview){
+                console.log("copy preview to clicpbord!");
+                
+                clipboard.writeText(preview)
+                alert('成功复制到剪切板。')
+            }
+            
+        });
+        })
+       
         
      </script>
            
@@ -30,7 +49,7 @@
 <body  >
     <div  >
          
-            <h2>预览窗口</h2> 
+            <h2>预览窗口[CTRL+E：快速复制]</h2> 
     </div>
     <div id="content" class='markdown-body'></div>
     <script>

@@ -4,7 +4,7 @@
   "description": "Edit.markdown",
   "author": "guo.tao <guo@tranway.cn>",
   "main": "main.js",
-  "license": "MIT",
+  "license": "Apache",
   "dependencies": {
     "angular": "^1.5.5",
     "chokidar": "^1.6.0",
